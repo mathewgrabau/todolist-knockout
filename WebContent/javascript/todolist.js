@@ -7,6 +7,17 @@ var ToDoList = function() {
 
 	var tasks = ko.observableArray();
 
+	var numCompletedTasks = ko.computed(function() {
+		// Using the array filter utility to make it easy to work with the data
+		var completedTasks = ko.utils.arrayFilter(tasks(), function(task){
+			// Only criteria is that it is completed.
+			return task.status() === 'complete';
+		});
+
+		// Return the final count now.
+		return completedTasks.length;
+	});
+
 	var clearTask = function() {
 		task.name(null);
 		task.description(null);
@@ -54,7 +65,7 @@ var ToDoList = function() {
 				0 : (left.name < right.name ? -1 : 1);
 		});
 	};
-
+	
 	var init = function() {
 		ko.applyBindings(ToDoList);
 	};
@@ -68,6 +79,7 @@ var ToDoList = function() {
 		deleteTask: deleteTask,
 		completeTask: completeTask,
 		sortByPriority: sortByPriority,
-		sortByName: sortByName
+		sortByName: sortByName,
+		numCompletedTasks: numCompletedTasks
 	};
 }();
