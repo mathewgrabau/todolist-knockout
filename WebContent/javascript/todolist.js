@@ -10,7 +10,8 @@ var ToDoList = function() {
 		console.log("addTask: name: " + task.name() + "; description: " + task.description());
 		tasks.push({
 			name: task.name(),
-			description: task.description()
+			description: task.description(),
+			status: ko.observable('new')
 		});
 	};
 
@@ -19,7 +20,13 @@ var ToDoList = function() {
 		console.log("deleteTask: " + task.name + "; " + task.description);
 		// Remove from the actual collection now
 		tasks.remove(task);
-	}
+	};
+
+	var completeTask = function(task) {
+		console.log('completeTask ' + task.name);
+		// set status for the task to complete
+		task.status('complete');
+	};
 
 	var init = function() {
 		ko.applyBindings(ToDoList);
@@ -31,6 +38,7 @@ var ToDoList = function() {
 		tasks: tasks,
 		task: task,
 		addTask: addTask,
-		deleteTask: deleteTask
+		deleteTask: deleteTask,
+		completeTask: completeTask
 	};
 }();

@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prebuild": "if not exist WebContent\\javascript mkdir WebContent\\javascript",
-    "copy-jquery": "copy /Y node_modules\\jquery\\dist\\jquery.js WebContent\\javascript",
-    "copy-knockout": "copy /Y node_modules\\knockout\\build\\output\\knockout-latest.js WebContent\\javascript",
-    "copy-bootstrap": "xcopy /E /Y /I node_modules\\bootstrap\\dist WebContent\\bootstrap",
+    "prebuild": "mkdir -p WebContent/javascript WebContent/bootstrap",
+    "copy-jquery": "cp -f node_modules/jquery/dist/jquery.js WebContent/javascript",
+    "copy-knockout": "cp -f node_modules/knockout/build/output/knockout-latest.js WebContent/javascript",
+    "copy-bootstrap": "cp -R node_modules/bootstrap/dist/ WebContent/bootstrap",
     "build": "npm run copy-jquery & npm run copy-knockout & npm run copy-bootstrap"
   },
   "author": "",

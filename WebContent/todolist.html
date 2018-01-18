@@ -19,6 +19,7 @@
 					Name <input type="text" data-bind="value: ToDoList.task.name" />
 					Description <input type="text" data-bind="value: ToDoList.task.description" />
 					<button class="btn btn-primary" data-bind="click: ToDoList.addTask">Add</button> 
+					
 				</div>
 			</div>
 			<table class="table">
@@ -29,11 +30,12 @@
 						<th>Actions</th>
 					</tr>
 				</thead>
-				<tbody>
-					<tr data-bind="foreach: ToDoList.tasks">
+				<tbody data-bind="foreach: ToDoList.tasks">
+					<tr data-bind="css: { success: status() === 'complete'}">
 						<td data-bind="text: name"></td>
 						<td data-bind="text: description"></td>
 						<td><button class="btn btn-danger" data-bind="click: ToDoList.deleteTask">Delete</button></td>
+						<td><button class="btn btn-success" data-bind="click: ToDoList.completeTask">Complete</button></td>
 					</tr>
 				</tbody>
 			</table>
