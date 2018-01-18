@@ -14,6 +14,13 @@ var ToDoList = function() {
 		});
 	};
 
+	var deleteTask = function(task) {
+		// Array collection are not observables, just plain objects (this is probably useful to know)
+		console.log("deleteTask: " + task.name + "; " + task.description);
+		// Remove from the actual collection now
+		tasks.remove(task);
+	}
+
 	var init = function() {
 		ko.applyBindings(ToDoList);
 	};
@@ -23,6 +30,7 @@ var ToDoList = function() {
 	return {
 		tasks: tasks,
 		task: task,
-		addTask: addTask
+		addTask: addTask,
+		deleteTask: deleteTask
 	};
 }();
