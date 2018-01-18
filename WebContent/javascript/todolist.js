@@ -37,6 +37,15 @@ var ToDoList = function() {
 		task.status('complete');
 	};
 
+	var sortByPriority = function() {
+		console.log("Sorting by priority");
+		/* Re-sort the array by the priority */
+		tasks.sort(function(left, right) {
+			return left.priority == right.priority ? 
+				0 : (left.priority < right.priority ? -1 : 1 );
+		});
+	}
+
 	var init = function() {
 		ko.applyBindings(ToDoList);
 	};
@@ -48,6 +57,7 @@ var ToDoList = function() {
 		task: task,
 		addTask: addTask,
 		deleteTask: deleteTask,
-		completeTask: completeTask
+		completeTask: completeTask,
+		sortByPriority: sortByPriority
 	};
 }();
