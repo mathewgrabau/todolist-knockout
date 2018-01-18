@@ -35,7 +35,7 @@
 						<td data-bind="text: name"></td>
 						<td data-bind="text: description"></td>
 						<td><button class="btn btn-danger" data-bind="click: ToDoList.deleteTask">Delete</button></td>
-						<td><button class="btn btn-success" data-bind="click: ToDoList.completeTask">Complete</button></td>
+						<td><button class="btn btn-success" data-bind="click: ToDoList.completeTask, visible: status() !== 'complete'">Complete</button></td>
 					</tr>
 				</tbody>
 			</table>
