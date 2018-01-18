@@ -1,18 +1,27 @@
 var ToDoList = function() {
 	var task = {
 		name: ko.observable(),
-		description: ko.observable()
+		description: ko.observable(),
+		priority: ko.observable()
 	};
 
 	var tasks = ko.observableArray();
+
+	var clearTask = function() {
+		task.name(null);
+		task.description(null);
+		task.priority("1");
+	};
 
 	var addTask = function() {
 		console.log("addTask: name: " + task.name() + "; description: " + task.description());
 		tasks.push({
 			name: task.name(),
 			description: task.description(),
-			status: ko.observable('new')
+			status: ko.observable('new'),
+			priority: task.priority()
 		});
+		clearTask();
 	};
 
 	var deleteTask = function(task) {

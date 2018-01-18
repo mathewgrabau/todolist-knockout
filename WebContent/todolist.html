@@ -18,6 +18,11 @@
 				<div class="col-md-12">
 					Name <input type="text" data-bind="value: ToDoList.task.name" />
 					Description <input type="text" data-bind="value: ToDoList.task.description" />
+					Priority <select data-bind="value: ToDoList.task.priority">
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+					</select>
 					<button class="btn btn-primary" data-bind="click: ToDoList.addTask">Add</button> 
 					
 				</div>
@@ -26,7 +31,8 @@
 				<thead>
 					<tr>
 						<th>Name</th>
-						<th>Description</th>
+						<th>Description</th> 
+						<th>Priority</th>
 						<th>Actions</th>
 					</tr>
 				</thead>
@@ -34,6 +40,7 @@
 					<tr data-bind="css: { success: status() === 'complete'}">
 						<td data-bind="text: name"></td>
 						<td data-bind="text: description"></td>
+						<td data-bind="text: priority"></td>
 						<td><button class="btn btn-danger" data-bind="click: ToDoList.deleteTask">Delete</button></td>
 						<td><button class="btn btn-success" data-bind="click: ToDoList.completeTask, visible: status() !== 'complete'">Complete</button></td>
 					</tr>
